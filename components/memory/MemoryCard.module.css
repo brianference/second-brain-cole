@@ -1,0 +1,229 @@
+.card {
+  background: var(--surface-glass-1);
+  border: var(--glass-border-medium);
+  border-radius: 16px;
+  padding: 20px;
+  backdrop-filter: blur(var(--glass-blur-md));
+  box-shadow: var(--shadow-glass-md);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  animation: fadeInUp 0.4s ease backwards;
+}
+
+/* Shimmer effect */
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(139, 155, 255, 0.1),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.card:hover::before {
+  left: 100%;
+}
+
+.card:hover {
+  background: var(--surface-glass-2);
+  border-color: var(--indigo-400);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-glass-lg), var(--glow-indigo);
+}
+
+/* Header */
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.source {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.sourceEmoji {
+  font-size: 14px;
+}
+
+.source.mem0 {
+  color: var(--mem0-color);
+  background: rgba(99, 102, 241, 0.15);
+}
+
+.source.supermemory {
+  color: var(--supermemory-color);
+  background: rgba(167, 139, 250, 0.15);
+}
+
+.source.file {
+  color: var(--file-color);
+  background: rgba(34, 211, 238, 0.15);
+}
+
+.source.task {
+  color: var(--task-color);
+  background: rgba(52, 211, 153, 0.15);
+}
+
+.actions {
+  display: flex;
+  gap: 4px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.card:hover .actions {
+  opacity: 1;
+}
+
+.action {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background: var(--surface-glass-4);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text-tertiary);
+  transition: all 0.2s ease;
+}
+
+.action:hover {
+  background: var(--surface-glass-2);
+  color: var(--text-primary);
+}
+
+.action.active {
+  color: var(--indigo-400);
+  background: rgba(99, 102, 241, 0.15);
+}
+
+/* Content */
+.title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.content {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+/* Footer */
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 12px;
+  border-top: 1px solid rgba(139, 155, 255, 0.1);
+  gap: 8px;
+}
+
+.tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  flex: 1;
+}
+
+.tag {
+  padding: 4px 10px;
+  background: var(--surface-glass-4);
+  border-radius: 6px;
+  font-size: 12px;
+  color: var(--text-secondary);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.tag:hover {
+  background: var(--indigo-400);
+  color: white;
+  cursor: pointer;
+}
+
+.date {
+  font-size: 12px;
+  color: var(--text-tertiary);
+  white-space: nowrap;
+}
+
+/* Variants */
+.card.compact {
+  padding: 12px 16px;
+  border-radius: 12px;
+}
+
+.card.compact .title {
+  font-size: 16px;
+  -webkit-line-clamp: 1;
+  margin-bottom: 4px;
+}
+
+.card.compact .content {
+  font-size: 13px;
+  -webkit-line-clamp: 1;
+  margin-bottom: 8px;
+}
+
+.card.compact .footer {
+  padding-top: 8px;
+}
+
+.card.expanded {
+  padding: 32px;
+  border-radius: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.card.expanded .title {
+  font-size: 28px;
+  -webkit-line-clamp: unset;
+}
+
+.card.expanded .content {
+  font-size: 16px;
+  -webkit-line-clamp: unset;
+  line-height: 1.8;
+}
+
+/* Stagger animation */
+.card:nth-child(1) { animation-delay: 0.05s; }
+.card:nth-child(2) { animation-delay: 0.1s; }
+.card:nth-child(3) { animation-delay: 0.15s; }
+.card:nth-child(4) { animation-delay: 0.2s; }
+.card:nth-child(5) { animation-delay: 0.25s; }
+.card:nth-child(6) { animation-delay: 0.3s; }

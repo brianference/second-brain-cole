@@ -1,0 +1,211 @@
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.statCard {
+  background: var(--surface-glass-1);
+  border: var(--glass-border-medium);
+  border-radius: 16px;
+  padding: 24px;
+  backdrop-filter: blur(var(--glass-blur-md));
+  box-shadow: var(--shadow-glass-md);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.statCard::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(135deg, var(--indigo-400) 0%, var(--purple-500) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.statCard:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-glass-lg);
+}
+
+.statCard:hover::before {
+  opacity: 1;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.cardTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.cardIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--surface-glass-4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+
+.cardValue {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+  line-height: 1;
+}
+
+.cardChange {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.cardChange.positive {
+  color: var(--success);
+}
+
+.cardChange.negative {
+  color: var(--error);
+}
+
+.cardFooter {
+  font-size: 12px;
+  color: var(--text-tertiary);
+  padding-top: 16px;
+  border-top: 1px solid rgba(139, 155, 255, 0.1);
+}
+
+/* Wide Card (Chart) */
+.statCard.wide {
+  grid-column: span 2;
+}
+
+.chartContainer {
+  height: 200px;
+  margin-top: 20px;
+  position: relative;
+}
+
+.barChart {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  height: 100%;
+}
+
+.bar {
+  flex: 1;
+  min-width: 8px;
+  background: linear-gradient(135deg, var(--indigo-400) 0%, var(--purple-500) 100%);
+  border-radius: 4px 4px 0 0;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.bar:hover {
+  opacity: 0.8;
+  transform: translateY(-4px);
+}
+
+.barValue {
+  position: absolute;
+  top: -24px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-primary);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  white-space: nowrap;
+}
+
+.bar:hover .barValue {
+  opacity: 1;
+}
+
+/* Source Cards */
+.sourceCard {
+  background: var(--surface-glass-4);
+  border: var(--glass-border-subtle);
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.2s ease;
+}
+
+.sourceCard:hover {
+  background: var(--surface-glass-2);
+  border-color: var(--indigo-400);
+  transform: translateY(-2px);
+}
+
+.sourceIcon {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--indigo-400) 0%, var(--purple-500) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.sourceContent {
+  flex: 1;
+}
+
+.sourceLabel {
+  font-size: 12px;
+  color: var(--text-tertiary);
+  margin-bottom: 4px;
+}
+
+.sourceValue {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .dashboard {
+    grid-template-columns: 1fr;
+  }
+
+  .statCard.wide {
+    grid-column: span 1;
+  }
+
+  .cardValue {
+    font-size: 28px;
+  }
+
+  .chartContainer {
+    height: 150px;
+  }
+}

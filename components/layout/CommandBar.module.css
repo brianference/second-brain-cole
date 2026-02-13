@@ -1,0 +1,229 @@
+.commandBar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  height: 72px;
+  padding: 0 24px;
+  background: var(--surface-glass-1);
+  border-bottom: var(--glass-border-medium);
+  backdrop-filter: blur(var(--glass-blur-lg));
+  box-shadow: var(--shadow-glass-sm);
+  grid-area: command;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--indigo-400) 0%, var(--purple-500) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.logoEmoji {
+  font-size: 28px;
+  -webkit-text-fill-color: initial;
+}
+
+/* Search */
+.searchWrapper {
+  flex: 1;
+  max-width: 600px;
+  position: relative;
+}
+
+.searchWrapper::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 12px;
+  padding: 2px;
+  background: linear-gradient(135deg, var(--indigo-400) 0%, var(--cyan-400) 100%);
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.searchWrapper.focused::before {
+  opacity: 1;
+}
+
+.searchInput {
+  width: 100%;
+  height: 48px;
+  padding: 0 48px 0 48px;
+  background: var(--surface-glass-3);
+  border: 2px solid transparent;
+  border-radius: 12px;
+  color: var(--text-primary);
+  font-size: 16px;
+  backdrop-filter: blur(var(--glass-blur-md));
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.searchInput::placeholder {
+  color: var(--text-muted);
+}
+
+.searchInput:focus {
+  outline: none;
+  background: var(--surface-glass-3);
+  box-shadow: var(--shadow-glass-md), var(--glow-indigo);
+}
+
+.searchIcon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  transition: color 0.3s ease;
+  z-index: 2;
+}
+
+.searchWrapper.focused .searchIcon {
+  color: var(--indigo-400);
+}
+
+.searchShortcut {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 4px 8px;
+  background: var(--surface-glass-4);
+  border-radius: 6px;
+  font-size: 12px;
+  color: var(--text-tertiary);
+  font-family: monospace;
+  z-index: 2;
+}
+
+/* View Switcher */
+.viewSwitcher {
+  display: flex;
+  gap: 4px;
+  background: var(--surface-glass-4);
+  padding: 4px;
+  border-radius: 10px;
+}
+
+.viewOption {
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: none;
+  white-space: nowrap;
+}
+
+.viewOption:hover {
+  color: var(--text-primary);
+}
+
+.viewOption.active {
+  background: linear-gradient(135deg, var(--indigo-400) 0%, var(--purple-500) 100%);
+  color: white;
+  box-shadow: var(--shadow-glass-sm);
+}
+
+/* Quick Actions */
+.quickActions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.quickAction {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--surface-glass-4);
+  border: var(--glass-border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text-secondary);
+  transition: all 0.2s ease;
+}
+
+.quickAction:hover {
+  background: var(--surface-glass-2);
+  border-color: var(--indigo-400);
+  color: var(--text-primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glass-md);
+}
+
+.quickAction.newMemory {
+  background: linear-gradient(135deg, var(--indigo-400) 0%, var(--purple-500) 100%);
+  color: white;
+  width: auto;
+  padding: 0 16px;
+  gap: 8px;
+  border: none;
+}
+
+.quickAction.newMemory span {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.quickAction.newMemory:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glass-md), var(--glow-indigo);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .commandBar {
+    padding: 0 16px;
+    gap: 12px;
+  }
+
+  .logo {
+    font-size: 20px;
+  }
+
+  .searchWrapper {
+    max-width: 100%;
+  }
+
+  .viewSwitcher {
+    display: none;
+  }
+
+  .quickActions {
+    gap: 4px;
+  }
+
+  .quickAction.newMemory span {
+    display: none;
+  }
+
+  .quickAction.newMemory {
+    width: 40px;
+    padding: 0;
+  }
+}

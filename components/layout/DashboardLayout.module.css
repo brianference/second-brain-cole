@@ -1,0 +1,86 @@
+.layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  grid-template-rows: 72px 1fr 48px;
+  grid-template-areas:
+    "command command"
+    "sidebar content"
+    "status  status";
+  height: 100vh;
+  overflow: hidden;
+}
+
+.content {
+  grid-area: content;
+  overflow-y: auto;
+  padding: 24px;
+  position: relative;
+}
+
+.statusBar {
+  grid-area: status;
+  background: var(--surface-glass-3);
+  border-top: var(--glass-border-subtle);
+  backdrop-filter: blur(var(--glass-blur-md));
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+  color: var(--text-tertiary);
+}
+
+.statusLeft {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.statusIndicator {
+  font-size: 16px;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.statusDivider {
+  color: var(--text-muted);
+}
+
+.statusRight {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.searchStatus {
+  font-size: 13px;
+  color: var(--indigo-400);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .layout {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "command"
+      "content"
+      "status";
+  }
+
+  .content {
+    padding: 16px;
+  }
+
+  .statusBar {
+    padding: 0 16px;
+  }
+
+  .statusLeft span:not(.statusIndicator) {
+    display: none;
+  }
+
+  .statusLeft span:nth-child(2),
+  .statusLeft span:nth-child(3),
+  .statusLeft span:nth-child(4) {
+    display: inline;
+  }
+}

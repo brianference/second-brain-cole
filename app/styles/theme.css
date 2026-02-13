@@ -1,0 +1,211 @@
+/* Indigo Night Theme - Second Brain Dashboard */
+
+:root {
+  /* Foundation Colors */
+  --bg-primary-from: #0f0f1e;
+  --bg-primary-via: #1a1a2e;
+  --bg-primary-to: #16213e;
+  
+  /* Surface Colors (Glassmorphic) */
+  --surface-glass-1: rgba(30, 30, 50, 0.6);
+  --surface-glass-2: rgba(40, 40, 65, 0.7);
+  --surface-glass-3: rgba(25, 25, 45, 0.8);
+  --surface-glass-4: rgba(50, 50, 80, 0.5);
+
+  /* Indigo Accent Spectrum */
+  --indigo-50: #e0e7ff;
+  --indigo-100: #c7d2fe;
+  --indigo-200: #a5b4fc;
+  --indigo-300: #818cf8;
+  --indigo-400: #6366f1;
+  --indigo-500: #4f46e5;
+  --indigo-600: #4338ca;
+  --indigo-700: #3730a3;
+  --indigo-800: #312e81;
+  --indigo-900: #1e1b4b;
+
+  /* Complementary Accents */
+  --purple-400: #a78bfa;
+  --purple-500: #8b5cf6;
+  --cyan-400: #22d3ee;
+  --emerald-400: #34d399;
+  --amber-400: #fbbf24;
+  --rose-400: #fb7185;
+
+  /* Text Colors */
+  --text-primary: #e8e8f5;
+  --text-secondary: #c0c0d8;
+  --text-tertiary: #9090b0;
+  --text-muted: #707088;
+  --text-link: #818cf8;
+  --text-accent: #a78bfa;
+
+  /* Semantic Colors */
+  --success: #34d399;
+  --warning: #fbbf24;
+  --error: #fb7185;
+  --info: #22d3ee;
+
+  /* Memory Type Colors */
+  --mem0-color: #6366f1;
+  --supermemory-color: #a78bfa;
+  --file-color: #22d3ee;
+  --task-color: #34d399;
+
+  /* Glass Morphism */
+  --glass-blur-sm: 10px;
+  --glass-blur-md: 20px;
+  --glass-blur-lg: 30px;
+  --glass-blur-xl: 40px;
+
+  /* Borders */
+  --glass-border-subtle: 1px solid rgba(139, 155, 255, 0.1);
+  --glass-border-medium: 1px solid rgba(139, 155, 255, 0.2);
+  --glass-border-strong: 1px solid rgba(139, 155, 255, 0.3);
+
+  /* Shadows */
+  --shadow-glass-sm: 0 4px 16px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(139, 155, 255, 0.1);
+  --shadow-glass-md: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 2px rgba(139, 155, 255, 0.15);
+  --shadow-glass-lg: 0 16px 48px rgba(0, 0, 0, 0.5), inset 0 1px 3px rgba(139, 155, 255, 0.2);
+
+  /* Glows */
+  --glow-indigo: 0 0 20px rgba(99, 102, 241, 0.5);
+  --glow-purple: 0 0 20px rgba(139, 92, 246, 0.5);
+  --glow-cyan: 0 0 20px rgba(34, 211, 238, 0.5);
+}
+
+/* Global Styles */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background: linear-gradient(135deg, var(--bg-primary-from) 0%, var(--bg-primary-via) 50%, var(--bg-primary-to) 100%);
+  min-height: 100vh;
+  color: var(--text-primary);
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(30, 30, 50, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--indigo-400);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--indigo-500);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* Utility Classes */
+.glass-card {
+  background: var(--surface-glass-1);
+  border: var(--glass-border-medium);
+  border-radius: 16px;
+  padding: 24px;
+  backdrop-filter: blur(var(--glass-blur-md));
+  box-shadow: var(--shadow-glass-md);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  background: var(--surface-glass-2);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-glass-lg), var(--glow-indigo);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, var(--indigo-400) 0%, var(--purple-500) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-border {
+  position: relative;
+}
+
+.gradient-border::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  padding: 2px;
+  background: linear-gradient(135deg, var(--indigo-400) 0%, var(--cyan-400) 100%);
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.gradient-border:focus-within::before {
+  opacity: 1;
+}
