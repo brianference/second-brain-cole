@@ -1,11 +1,12 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { CommandBar } from '@/components/layout/CommandBar';
 import { Sidebar } from '@/components/layout/Sidebar';
 import { MemoryGrid } from '@/components/memory/MemoryGrid';
 import { TimelineView } from '@/components/timeline/TimelineView';
 import { StatsDashboard } from '@/components/stats/StatsDashboard';
+import { Memory, TimelineEntry, Stats } from '@/types/memory';
 import { sampleMemories, sampleTimelineEntries, sampleStats } from '@/lib/sampleData';
 import styles from './page.module.css';
 
@@ -37,10 +38,63 @@ export default function Home() {
   const [currentView, setCurrentView] = useState<'grid' | 'timeline' | 'stats'>('grid');
   const [currentSection, setCurrentSection] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
+  const [memories, setMemories] = useState<Memory[]>(sampleMemories);
+  const [timelineEntries, setTimelineEntries] = useState<TimelineEntry[]>(sampleTimelineEntries);
+  const [stats, setStats] = useState<Stats>(sampleStats);
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Load real data from JSON files
+  useEffect(() => {
+    async function loadRealData() {
+      try {
+        const [memoriesRes, timelineRes, statsRes] = await Promise.all([
+          fetch('/memories.json').catch(() => null),
+          fetch('/timeline.json').catch(() => null),
+          fetch('/stats.json').catch(() => null),
+        ]);
+
+        if (memoriesRes?.ok) {
+          const data = await memoriesRes.json();
+          // Convert date strings to Date objects
+          const processed = data.map((m: any) => ({
+            ...m,
+            createdAt: new Date(m.createdAt),
+            updatedAt: new Date(m.updatedAt),
+          }));
+          setMemories(processed);
+        }
+
+        if (timelineRes?.ok) {
+          const data = await timelineRes.json();
+          const processed = data.map((e: any) => ({
+            ...e,
+            timestamp: new Date(e.timestamp),
+            memory: {
+              ...e.memory,
+              createdAt: new Date(e.memory.createdAt),
+              updatedAt: new Date(e.memory.updatedAt),
+            },
+          }));
+          setTimelineEntries(processed);
+        }
+
+        if (statsRes?.ok) {
+          const data = await statsRes.json();
+          setStats(data);
+        }
+      } catch (error) {
+        console.error('Error loading real data:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+
+    loadRealData();
+  }, []);
 
   // Filter memories based on section and search query
   const filteredMemories = useMemo(() => {
-    let filtered = sampleMemories;
+    let filtered = memories;
     const filter = sectionFilters[currentSection];
 
     if (filter && currentSection !== 'all') {
@@ -98,21 +152,21 @@ export default function Home() {
     }
 
     return filtered;
-  }, [currentSection, searchQuery]);
+  }, [currentSection, searchQuery, memories]);
 
   // Filter timeline entries based on the same criteria
   const filteredTimelineEntries = useMemo(() => {
     // First filter the memories used in timeline
     const memoryIds = new Set(filteredMemories.map(m => m.id));
-    return sampleTimelineEntries.filter(entry => memoryIds.has(entry.memory.id));
-  }, [filteredMemories]);
+    return timelineEntries.filter(entry => memoryIds.has(entry.memory.id));
+  }, [filteredMemories, timelineEntries]);
 
   const renderView = () => {
     switch (currentView) {
       case 'timeline':
         return <TimelineView entries={filteredTimelineEntries} />;
       case 'stats':
-        return <StatsDashboard stats={sampleStats} />;
+        return <StatsDashboard stats={stats} />;
       case 'grid':
       default:
         return <MemoryGrid memories={filteredMemories} />;
@@ -148,12 +202,12 @@ export default function Home() {
       
       <div className={styles.statusBar}>
         <div className={styles.statusLeft}>
-          <span className={styles.statusIndicator}>🔄</span>
-          <span>Synced</span>
+          <span className={styles.statusIndicator}>{isLoading ? '⏳' : '🔄'}</span>
+          <span>{isLoading ? 'Loading...' : 'Synced'}</span>
           <span className={styles.statusDivider}>•</span>
-          <span>1,247 memories</span>
+          <span>{memories.length.toLocaleString()} memories</span>
           <span className={styles.statusDivider}>•</span>
-          <span>Last updated 2 min ago</span>
+          <span>Real data from OpenClaw</span>
         </div>
         
         <div className={styles.statusRight}>
