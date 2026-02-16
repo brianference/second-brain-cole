@@ -8,6 +8,7 @@ import { TimelineView } from '@/components/timeline/TimelineView';
 import { StatsDashboard } from '@/components/stats/StatsDashboard';
 import { Memory, TimelineEntry, Stats } from '@/types/memory';
 import { sampleMemories, sampleTimelineEntries, sampleStats } from '@/lib/sampleData';
+import { SourceDetailView } from '@/components/views/SourceDetailView';
 import styles from './page.module.css';
 
 // Map sidebar sections to their corresponding filter types
@@ -162,6 +163,14 @@ export default function Home() {
   }, [filteredMemories, timelineEntries]);
 
   const renderView = () => {
+    // Show detail view for mem0 or supermemory
+    if (currentSection === 'mem0') {
+      return <SourceDetailView source="mem0" memories={memories.filter(m => m.source === 'mem0')} />;
+    }
+    if (currentSection === 'supermemory') {
+      return <SourceDetailView source="supermemory" memories={memories.filter(m => m.source === 'supermemory')} />;
+    }
+    
     switch (currentView) {
       case 'timeline':
         return <TimelineView entries={filteredTimelineEntries} />;

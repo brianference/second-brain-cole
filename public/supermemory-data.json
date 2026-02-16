@@ -1,0 +1,114 @@
+[
+  {
+    "id": "sm-1",
+    "title": "Cloudflare Pages Deploy Procedure (Commandment #35): 3 metho...",
+    "content": "Cloudflare Pages Deploy Procedure (Commandment #35): 3 methods - API Trigger, Git Push, Wrangler CLI. Token is read-only Account API, works with Method 1.",
+    "source": "supermemory",
+    "createdAt": "2026-02-16T04:38:30.751Z",
+    "tags": [
+      "cloudflare",
+      "deploy",
+      "workflow"
+    ]
+  },
+  {
+    "id": "sm-2",
+    "title": "Mission Control real data sprint completed - $681.51 cost, 3...",
+    "content": "Mission Control real data sprint completed - $681.51 cost, 325 sessions tracked, live at https://mission-control-cole.pages.dev",
+    "source": "supermemory",
+    "createdAt": "2026-02-16T04:38:30.751Z",
+    "tags": [
+      "mission-control",
+      "deployment",
+      "milestone"
+    ]
+  },
+  {
+    "id": "sm-3",
+    "title": "Second Brain v2.0.0 features: Auto-Capture from conversation...",
+    "content": "Second Brain v2.0.0 features: Auto-Capture from conversations, Cross-Context Search across all memory systems, Kanban Integration",
+    "source": "supermemory",
+    "createdAt": "2026-02-16T04:38:30.751Z",
+    "tags": [
+      "second-brain",
+      "features"
+    ]
+  },
+  {
+    "id": "sm-4",
+    "title": "tmux/Claude Code workflows DEPRECATED as of 2026-02-15. Use ...",
+    "content": "tmux/Claude Code workflows DEPRECATED as of 2026-02-15. Use sessions_spawn exclusively for background coding work.",
+    "source": "supermemory",
+    "createdAt": "2026-02-16T04:38:30.751Z",
+    "tags": [
+      "workflow",
+      "deprecation"
+    ]
+  },
+  {
+    "id": "sm-5",
+    "title": "Memory optimization: 99 mem0 memories, 14 duplicates removed...",
+    "content": "Memory optimization: 99 mem0 memories, 14 duplicates removed. MEMORY.md at 17KB with 22 sections.",
+    "source": "supermemory",
+    "createdAt": "2026-02-16T04:38:30.751Z",
+    "tags": [
+      "memory",
+      "optimization"
+    ]
+  },
+  {
+    "id": "sm-6",
+    "title": "Enhanced Metadata Strategy: mem0 gets full metadata dict, Su...",
+    "content": "Enhanced Metadata Strategy: mem0 gets full metadata dict, Supermemory gets descriptive tags only (client limitation)",
+    "source": "supermemory",
+    "createdAt": "2026-02-16T04:38:30.751Z",
+    "tags": [
+      "metadata",
+      "strategy"
+    ]
+  },
+  {
+    "id": "sm-7",
+    "title": "Percy Visual Testing operational - Build #12 at https://perc...",
+    "content": "Percy Visual Testing operational - Build #12 at https://percy.io/62995174/web/Cole-14e161a1/builds/46960267",
+    "source": "supermemory",
+    "createdAt": "2026-02-16T04:38:30.751Z",
+    "tags": [
+      "percy",
+      "testing"
+    ]
+  },
+  {
+    "id": "sm-8",
+    "title": "Bland AI phone assistant active - $0.14/min, used for restau...",
+    "content": "Bland AI phone assistant active - $0.14/min, used for restaurant reservations. Dashboard: https://app.bland.ai/",
+    "source": "supermemory",
+    "createdAt": "2026-02-16T04:38:30.751Z",
+    "tags": [
+      "bland-ai",
+      "phone"
+    ]
+  },
+  {
+    "id": "sm-9",
+    "title": "Brian's identity: AI product manager, Cave Creek AZ, daughte...",
+    "content": "Brian's identity: AI product manager, Cave Creek AZ, daughter Lena (ASU accounting), @swordtruth X account",
+    "source": "supermemory",
+    "createdAt": "2026-02-16T04:38:30.751Z",
+    "tags": [
+      "identity",
+      "brian"
+    ]
+  },
+  {
+    "id": "sm-10",
+    "title": "Cost optimization active: $110-115/month savings via model s...",
+    "content": "Cost optimization active: $110-115/month savings via model switching, morning briefing to Haiku, memory flush to Haiku",
+    "source": "supermemory",
+    "createdAt": "2026-02-16T04:38:30.751Z",
+    "tags": [
+      "cost",
+      "optimization"
+    ]
+  }
+]

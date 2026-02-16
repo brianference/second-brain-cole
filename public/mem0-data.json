@@ -1,0 +1,222 @@
+[
+  {
+    "id": "a763bf19-ca22-4a76-a454-3baa91450d98",
+    "title": "Memory Consistency Audit cron job runs daily at 3:00 AM MST ...",
+    "content": "Memory Consistency Audit cron job runs daily at 3:00 AM MST to clean outdated memories",
+    "source": "mem0",
+    "createdAt": "2026-02-15T21:28:00Z",
+    "tags": [
+      "mem0",
+      "auto-captured"
+    ]
+  },
+  {
+    "id": "867ee4b6-d110-431f-88a3-3068ad331613",
+    "title": "Cloudflare Deploy Rule (Commandment #35): 1. API Trigger fir...",
+    "content": "Cloudflare Deploy Rule (Commandment #35): 1. API Trigger first (works with read-only token), 2. Git push second (if auto-deploy connected), 3. Wrangler CLI third (requires write permissions)",
+    "source": "mem0",
+    "createdAt": "2026-02-15T21:17:00Z",
+    "tags": [
+      "mem0",
+      "auto-captured"
+    ]
+  },
+  {
+    "id": "db7b5c56-913a-4487-bba9-0744c04d8273",
+    "title": "Second Brain dashboard deployed to Cloudflare Pages at https...",
+    "content": "Second Brain dashboard deployed to Cloudflare Pages at https://second-brain-cole.pages.dev",
+    "source": "mem0",
+    "createdAt": "2026-02-15T21:00:00Z",
+    "tags": [
+      "mem0",
+      "auto-captured"
+    ]
+  },
+  {
+    "id": "cfe83f31-3fd6-4702-b2ae-657f74fc3f1b",
+    "title": "Working on Second Brain project focusing on memory managemen...",
+    "content": "Working on Second Brain project focusing on memory management and data organization",
+    "source": "mem0",
+    "createdAt": "2026-02-15T20:00:00Z",
+    "tags": [
+      "mem0",
+      "auto-captured"
+    ]
+  },
+  {
+    "id": "7ad14a60-3a46-4e51-a0ff-f20bc85b5a77",
+    "title": "Fixed Security Sentinel and Daily File Review crons by switc...",
+    "content": "Fixed Security Sentinel and Daily File Review crons by switching to openrouter/minimax/minimax-m2.1",
+    "source": "mem0",
+    "createdAt": "2026-02-15T19:00:00Z",
+    "tags": [
+      "mem0",
+      "auto-captured"
+    ]
+  },
+  {
+    "id": "b7c2a9a9-4f47-4274-a27d-27fe8161331a",
+    "title": "Using OpenAI for embeddings and LLM for mem0 configurations",
+    "content": "Using OpenAI for embeddings and LLM for mem0 configurations",
+    "source": "mem0",
+    "createdAt": "2026-02-15T18:00:00Z",
+    "tags": [
+      "mem0",
+      "auto-captured"
+    ]
+  },
+  {
+    "id": "3a3a3119-10b7-4df3-803f-dcb6ef8c11a1",
+    "title": "Smart memory strategy: search before storing, consolidate fa...",
+    "content": "Smart memory strategy: search before storing, consolidate facts, use category prefixes (IDENTITY:, PROJECT:, WORKFLOW:), schedule periodic cleanup",
+    "source": "mem0",
+    "createdAt": "2026-02-15T17:00:00Z",
+    "tags": [
+      "mem0",
+      "auto-captured"
+    ]
+  },
+  {
+    "id": "e5a12205-50c1-4abf-aa6e-9a4188a74413",
+    "title": "Task priorities align with Commandment #32 (never use mock d...",
+    "content": "Task priorities align with Commandment #32 (never use mock data) and Mission Control focus",
+    "source": "mem0",
+    "createdAt": "2026-02-15T16:00:00Z",
+    "tags": [
+      "mem0",
+      "auto-captured"
+    ]
+  },
+  {
+    "id": "7f919e5c-6e3b-406d-bfab-fc216cfd1ed2",
+    "title": "Lessons saved to multiple memory systems: Daily Memory, MEMO...",
+    "content": "Lessons saved to multiple memory systems: Daily Memory, MEMORY.md, Supermemory, and mem0",
+    "source": "mem0",
+    "createdAt": "2026-02-15T15:00:00Z",
+    "tags": [
+      "mem0",
+      "auto-captured"
+    ]
+  },
+  {
+    "id": "bf8a5683-281a-4731-97d1-64edc851131d",
+    "title": "Created kanban-deploy skill with complete deployment workflo...",
+    "content": "Created kanban-deploy skill with complete deployment workflow and Playwright screenshot template",
+    "source": "mem0",
+    "createdAt": "2026-02-15T14:00:00Z",
+    "tags": [
+      "mem0",
+      "auto-captured"
+    ]
+  },
+  {
+    "id": "6781ae62-a808-4db4-b450-9d8b172cb8ac",
+    "title": "Always provide screenshot proof before claiming deployment -...",
+    "content": "Always provide screenshot proof before claiming deployment - NEVER skip this step",
+    "source": "mem0",
+    "createdAt": "2026-02-15T14:00:00Z",
+    "tags": [
+      "mem0",
+      "auto-captured"
+    ]
+  },
+  {
+    "id": "25d9af1c-5322-4809-8197-74bcad6b9d20",
+    "title": "Added 4-hour backlog triage cron powered by MiniMax M2.1 to ...",
+    "content": "Added 4-hour backlog triage cron powered by MiniMax M2.1 to Second Brain",
+    "source": "mem0",
+    "createdAt": "2026-02-15T12:00:00Z",
+    "tags": [
+      "mem0",
+      "auto-captured"
+    ]
+  },
+  {
+    "id": "03830967-82c4-4add-890c-254d4c35351a",
+    "title": "Top 4 Mission Control tasks: ActivityStream, ActiveAgents, C...",
+    "content": "Top 4 Mission Control tasks: ActivityStream, ActiveAgents, CostTracking real data replacement, integration",
+    "source": "mem0",
+    "createdAt": "2026-02-15T11:00:00Z",
+    "tags": [
+      "mem0",
+      "auto-captured"
+    ]
+  },
+  {
+    "id": "25d3b0e3-b7ed-4c69-9bf2-0a2669b770a0",
+    "title": "MobileClaw is developed using React Native and Expo",
+    "content": "MobileClaw is developed using React Native and Expo",
+    "source": "mem0",
+    "createdAt": "2026-02-14T18:00:00Z",
+    "tags": [
+      "mem0",
+      "auto-captured"
+    ]
+  },
+  {
+    "id": "8577a310-79f9-420b-bcb0-84ee8c5b4e8d",
+    "title": "MobileClaw Project is a React Native/Expo mobile app for iOS...",
+    "content": "MobileClaw Project is a React Native/Expo mobile app for iOS and Android, NOT a web app",
+    "source": "mem0",
+    "createdAt": "2026-02-14T18:00:00Z",
+    "tags": [
+      "mem0",
+      "auto-captured"
+    ]
+  },
+  {
+    "id": "2d4243b9-3f69-4c85-be95-cebcb5a7f91b",
+    "title": "Brian's goals: 1) @swordtruth growth (TPUSA corruption), 2) ...",
+    "content": "Brian's goals: 1) @swordtruth growth (TPUSA corruption), 2) Lena scholarships (ASU, no fees), 3) AI product dev (MobileClaw, Kanban), 4) Content automation (TikTok→X, Grok Imagine)",
+    "source": "mem0",
+    "createdAt": "2026-02-12T10:00:00Z",
+    "tags": [
+      "mem0",
+      "auto-captured"
+    ]
+  },
+  {
+    "id": "4c994f8a-e23d-4979-9b48-909fd3da23b7",
+    "title": "User's name is Brian",
+    "content": "User's name is Brian",
+    "source": "mem0",
+    "createdAt": "2026-02-10T10:00:00Z",
+    "tags": [
+      "mem0",
+      "auto-captured"
+    ]
+  },
+  {
+    "id": "4cfd3062-d57f-4d28-9d3e-6fdb789ac524",
+    "title": "User owns the @swordtruth Twitter account for TPUSA corrupti...",
+    "content": "User owns the @swordtruth Twitter account for TPUSA corruption content",
+    "source": "mem0",
+    "createdAt": "2026-02-10T10:00:00Z",
+    "tags": [
+      "mem0",
+      "auto-captured"
+    ]
+  },
+  {
+    "id": "f292573c-2de2-44d8-8793-6bcd0f400ea4",
+    "title": "User has a daughter named Lena who requires ASU accounting/f...",
+    "content": "User has a daughter named Lena who requires ASU accounting/finance scholarships with no fees",
+    "source": "mem0",
+    "createdAt": "2026-02-10T10:00:00Z",
+    "tags": [
+      "mem0",
+      "auto-captured"
+    ]
+  },
+  {
+    "id": "e50d73be-36a6-4919-8232-eedfd0c5602f",
+    "title": "User's timezone is America/Phoenix (no DST)",
+    "content": "User's timezone is America/Phoenix (no DST)",
+    "source": "mem0",
+    "createdAt": "2026-02-10T10:00:00Z",
+    "tags": [
+      "mem0",
+      "auto-captured"
+    ]
+  }
+]
