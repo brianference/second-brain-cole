@@ -201,6 +201,7 @@ export default function Home() {
       />
       
       <Sidebar
+        key={`sidebar-${stats.totalMemories}`}
         currentSection={currentSection}
         onSectionChange={setCurrentSection}
         counts={{
