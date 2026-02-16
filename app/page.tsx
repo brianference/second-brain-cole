@@ -206,12 +206,10 @@ export default function Home() {
         }}
       />
       
-      {!isLoading && (
-        <Sidebar
-          key={`sidebar-${stats.totalMemories}`}
+      <Sidebar
           currentSection={currentSection}
           onSectionChange={setCurrentSection}
-          counts={{
+          counts={stats.totalMemories > 0 ? {
             total: stats.totalMemories,
             mem0: stats.sourceDistribution.mem0,
             supermemory: stats.sourceDistribution.supermemory,
@@ -223,9 +221,8 @@ export default function Home() {
               const weekAgo = Date.now() - 7 * 24 * 60 * 60 * 1000;
               return new Date(m.createdAt).getTime() > weekAgo;
             }).length,
-          }}
+          } : undefined}
         />
-      )}
       
       <main className={styles.content}>
         {renderView()}
