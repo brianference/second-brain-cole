@@ -3,17 +3,29 @@
 import React from 'react';
 import styles from './Sidebar.module.css';
 
+interface SidebarCounts {
+  total: number;
+  mem0: number;
+  supermemory: number;
+  files: number;
+  tasks: number;
+  favorites?: number;
+  pinned?: number;
+  recent?: number;
+}
+
 interface SidebarProps {
   isCollapsed?: boolean;
   currentSection?: string;
   onSectionChange?: (section: string) => void;
+  counts?: SidebarCounts;
 }
 
 interface SidebarItem {
   id: string;
   icon: string;
   label: string;
-  count?: number;
+  countKey?: keyof SidebarCounts;
   color?: string;
   isAction?: boolean;
 }
@@ -27,28 +39,28 @@ const sidebarSections: SidebarSection[] = [
   {
     title: "Views",
     items: [
-      { id: "all", icon: "🔍", label: "All Memories", count: 1247 },
-      { id: "favorites", icon: "⭐", label: "Favorites", count: 89 },
-      { id: "pinned", icon: "📌", label: "Pinned", count: 12 },
-      { id: "recent", icon: "🕐", label: "Recent", count: 50 },
+      { id: "all", icon: "🔍", label: "All Memories", countKey: "total" },
+      { id: "favorites", icon: "⭐", label: "Favorites", countKey: "favorites" },
+      { id: "pinned", icon: "📌", label: "Pinned", countKey: "pinned" },
+      { id: "recent", icon: "🕐", label: "Recent", countKey: "recent" },
       { id: "analytics", icon: "📊", label: "Analytics" },
     ]
   },
   {
     title: "Sources",
     items: [
-      { id: "mem0", icon: "🧠", label: "Mem0", count: 542, color: "mem0" },
-      { id: "supermemory", icon: "💫", label: "Supermemory", count: 318, color: "supermemory" },
-      { id: "files", icon: "📄", label: "Files", count: 267, color: "file" },
-      { id: "tasks", icon: "✅", label: "Tasks", count: 120, color: "task" },
+      { id: "mem0", icon: "🧠", label: "Mem0", countKey: "mem0", color: "mem0" },
+      { id: "supermemory", icon: "💫", label: "Supermemory", countKey: "supermemory", color: "supermemory" },
+      { id: "files", icon: "📄", label: "Files", countKey: "files", color: "file" },
+      { id: "tasks", icon: "✅", label: "Tasks", countKey: "tasks", color: "task" },
     ]
   },
   {
     title: "Collections",
     items: [
-      { id: "work", icon: "📚", label: "Work", count: 456 },
-      { id: "personal", icon: "🎨", label: "Personal", count: 223 },
-      { id: "learning", icon: "📖", label: "Learning", count: 189 },
+      { id: "work", icon: "📚", label: "Work" },
+      { id: "personal", icon: "🎨", label: "Personal" },
+      { id: "learning", icon: "📖", label: "Learning" },
       { id: "new-collection", icon: "➕", label: "New Collection", isAction: true },
     ]
   },
@@ -63,10 +75,15 @@ const sidebarSections: SidebarSection[] = [
   }
 ];
 
-export function Sidebar({ isCollapsed = false, currentSection = 'all', onSectionChange }: SidebarProps) {
+export function Sidebar({ isCollapsed = false, currentSection = 'all', onSectionChange, counts }: SidebarProps) {
   if (isCollapsed) {
     return null;
   }
+
+  const getCount = (countKey?: keyof SidebarCounts): number | undefined => {
+    if (!countKey || !counts) return undefined;
+    return counts[countKey];
+  };
 
   return (
     <div className={styles.sidebar}>
@@ -77,19 +94,22 @@ export function Sidebar({ isCollapsed = false, currentSection = 'all', onSection
           </div>
           
           <div className={styles.items}>
-            {section.items.map((item) => (
-              <button
-                key={item.id}
-                className={`${styles.item} ${currentSection === item.id ? styles.active : ''} ${item.isAction ? styles.action : ''}`}
-                onClick={() => onSectionChange?.(item.id)}
-              >
-                <span className={styles.itemIcon}>{item.icon}</span>
-                <span className={styles.itemLabel}>{item.label}</span>
-                {item.count !== undefined && (
-                  <span className={styles.itemCount}>{item.count}</span>
-                )}
-              </button>
-            ))}
+            {section.items.map((item) => {
+              const count = getCount(item.countKey);
+              return (
+                <button
+                  key={item.id}
+                  className={`${styles.item} ${currentSection === item.id ? styles.active : ''} ${item.isAction ? styles.action : ''}`}
+                  onClick={() => onSectionChange?.(item.id)}
+                >
+                  <span className={styles.itemIcon}>{item.icon}</span>
+                  <span className={styles.itemLabel}>{item.label}</span>
+                  {count !== undefined && count > 0 && (
+                    <span className={styles.itemCount}>{count}</span>
+                  )}
+                </button>
+              );
+            })}
           </div>
         </div>
       ))}
