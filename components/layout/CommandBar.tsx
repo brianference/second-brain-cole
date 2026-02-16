@@ -8,6 +8,8 @@ interface CommandBarProps {
   onSearch?: (query: string) => void;
   onViewChange?: (view: string) => void;
   currentView?: string;
+  onQuickAction?: () => void;
+  onAnalytics?: () => void;
 }
 
 const views = [
@@ -16,7 +18,7 @@ const views = [
   { id: 'stats', label: 'Stats', icon: '📊' },
 ];
 
-export function CommandBar({ onSearch, onViewChange, currentView = 'grid' }: CommandBarProps) {
+export function CommandBar({ onSearch, onViewChange, currentView = 'grid', onQuickAction, onAnalytics }: CommandBarProps) {
   const [searchQuery, setSearchQuery] = useState('');
   const [isFocused, setIsFocused] = useState(false);
 
@@ -61,10 +63,10 @@ export function CommandBar({ onSearch, onViewChange, currentView = 'grid' }: Com
       </div>
 
       <div className={styles.quickActions}>
-        <button className={styles.quickAction} title="Quick actions">
+        <button className={styles.quickAction} title="Quick actions" onClick={onQuickAction}>
           <Zap size={20} />
         </button>
-        <button className={styles.quickAction} title="Analytics">
+        <button className={styles.quickAction} title="Analytics" onClick={onAnalytics}>
           <BarChart3 size={20} />
         </button>
         <button className={styles.quickAction} title="Profile">
