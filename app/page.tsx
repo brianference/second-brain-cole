@@ -41,7 +41,13 @@ export default function Home() {
   const [searchQuery, setSearchQuery] = useState('');
   const [memories, setMemories] = useState<Memory[]>(sampleMemories);
   const [timelineEntries, setTimelineEntries] = useState<TimelineEntry[]>(sampleTimelineEntries);
-  const [stats, setStats] = useState<Stats>(sampleStats);
+  const [stats, setStats] = useState<Stats>({
+    totalMemories: 0,
+    thisWeek: 0,
+    activeRate: 0,
+    sourceDistribution: { mem0: 0, supermemory: 0, file: 0, task: 0 },
+    recentActivity: []
+  });
   const [isLoading, setIsLoading] = useState(true);
 
   // Load real data from JSON files
