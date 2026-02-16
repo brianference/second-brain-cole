@@ -7,7 +7,7 @@ import { MemoryGrid } from '@/components/memory/MemoryGrid';
 import { TimelineView } from '@/components/timeline/TimelineView';
 import { StatsDashboard } from '@/components/stats/StatsDashboard';
 import { Memory, TimelineEntry, Stats } from '@/types/memory';
-import { sampleMemories, sampleTimelineEntries, sampleStats } from '@/lib/sampleData';
+// REMOVED: sampleData import - NO FAKE DATA (Commandment #32)
 import { SourceDetailView } from '@/components/views/SourceDetailView';
 import styles from './page.module.css';
 
@@ -39,8 +39,8 @@ export default function Home() {
   const [currentView, setCurrentView] = useState<'grid' | 'timeline' | 'stats'>('grid');
   const [currentSection, setCurrentSection] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
-  const [memories, setMemories] = useState<Memory[]>(sampleMemories);
-  const [timelineEntries, setTimelineEntries] = useState<TimelineEntry[]>(sampleTimelineEntries);
+  const [memories, setMemories] = useState<Memory[]>([]);
+  const [timelineEntries, setTimelineEntries] = useState<TimelineEntry[]>([]);
   const [stats, setStats] = useState<Stats>({
     totalMemories: 0,
     thisWeek: 0,

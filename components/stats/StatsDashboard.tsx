@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Stats } from '@/types/memory';
-import { TrendingUp, TrendingDown } from 'lucide-react';
+import { TrendingUp, TrendingDown, Minus } from 'lucide-react';
 import styles from './StatsDashboard.module.css';
 
 interface StatsDashboardProps {
@@ -10,7 +10,42 @@ interface StatsDashboardProps {
 }
 
 export function StatsDashboard({ stats }: StatsDashboardProps) {
-  const changePercent = Math.round((stats.thisWeek / stats.totalMemories) * 100);
+  // Calculate REAL percentages from actual data
+  const weekPercentOfTotal = stats.totalMemories > 0 
+    ? Math.round((stats.thisWeek / stats.totalMemories) * 100) 
+    : 0;
+  
+  // Calculate week-over-week change from recentActivity
+  const lastWeekActivity = stats.recentActivity.slice(-7);
+  const previousWeekActivity = stats.recentActivity.slice(-14, -7);
+  
+  const thisWeekCount = lastWeekActivity.reduce((sum, d) => sum + d.count, 0);
+  const prevWeekCount = previousWeekActivity.reduce((sum, d) => sum + d.count, 0);
+  
+  const weekOverWeekChange = prevWeekCount > 0 
+    ? Math.round(((thisWeekCount - prevWeekCount) / prevWeekCount) * 100)
+    : thisWeekCount > 0 ? 100 : 0;
+
+  // Active rate vs target (assume 70% target)
+  const targetRate = 70;
+  const rateVsTarget = stats.activeRate - targetRate;
+
+  const getChangeIcon = (value: number) => {
+    if (value > 0) return <TrendingUp size={16} />;
+    if (value < 0) return <TrendingDown size={16} />;
+    return <Minus size={16} />;
+  };
+
+  const getChangeClass = (value: number) => {
+    if (value > 0) return styles.positive;
+    if (value < 0) return styles.negative;
+    return styles.neutral;
+  };
+
+  const formatChange = (value: number, suffix: string = '') => {
+    const sign = value > 0 ? '+' : '';
+    return `${sign}${value}%${suffix}`;
+  };
 
   return (
     <div className={styles.dashboard}>
@@ -21,11 +56,11 @@ export function StatsDashboard({ stats }: StatsDashboardProps) {
           <div className={styles.cardIcon}>🧠</div>
         </div>
         <div className={styles.cardValue}>{stats.totalMemories.toLocaleString()}</div>
-        <div className={`${styles.cardChange} ${styles.positive}`}>
-          <TrendingUp size={16} />
-          <span>+12% from last week</span>
+        <div className={`${styles.cardChange} ${getChangeClass(weekOverWeekChange)}`}>
+          {getChangeIcon(weekOverWeekChange)}
+          <span>{formatChange(weekOverWeekChange, ' from last week')}</span>
         </div>
-        <div className={styles.cardFooter}>Last updated 5 min ago</div>
+        <div className={styles.cardFooter}>{weekPercentOfTotal}% added this week</div>
       </div>
 
       <div className={styles.statCard}>
@@ -34,9 +69,9 @@ export function StatsDashboard({ stats }: StatsDashboardProps) {
           <div className={styles.cardIcon}>📈</div>
         </div>
         <div className={styles.cardValue}>+{stats.thisWeek}</div>
-        <div className={`${styles.cardChange} ${styles.positive}`}>
-          <TrendingUp size={16} />
-          <span>+23% increase</span>
+        <div className={`${styles.cardChange} ${getChangeClass(weekOverWeekChange)}`}>
+          {getChangeIcon(weekOverWeekChange)}
+          <span>{formatChange(weekOverWeekChange, ' vs prev week')}</span>
         </div>
         <div className={styles.cardFooter}>7 days</div>
       </div>
@@ -47,11 +82,11 @@ export function StatsDashboard({ stats }: StatsDashboardProps) {
           <div className={styles.cardIcon}>🔥</div>
         </div>
         <div className={styles.cardValue}>{stats.activeRate}%</div>
-        <div className={`${styles.cardChange} ${styles.negative}`}>
-          <TrendingDown size={16} />
-          <span>-5% from target</span>
+        <div className={`${styles.cardChange} ${getChangeClass(rateVsTarget)}`}>
+          {getChangeIcon(rateVsTarget)}
+          <span>{formatChange(rateVsTarget, ' from target')}</span>
         </div>
-        <div className={styles.cardFooter}>Daily average</div>
+        <div className={styles.cardFooter}>Target: {targetRate}%</div>
       </div>
 
       {/* Source Distribution */}
@@ -61,8 +96,8 @@ export function StatsDashboard({ stats }: StatsDashboardProps) {
         </div>
         <div className={styles.chartContainer}>
           <div className={styles.barChart}>
-            {stats.recentActivity.slice(0, 30).map((day, index) => {
-              const maxValue = Math.max(...stats.recentActivity.map(d => d.count));
+            {stats.recentActivity.slice(-30).map((day) => {
+              const maxValue = Math.max(...stats.recentActivity.slice(-30).map(d => d.count), 1);
               const height = (day.count / maxValue) * 100;
               
               return (
