@@ -206,24 +206,26 @@ export default function Home() {
         }}
       />
       
-      <Sidebar
-        key={`sidebar-${stats.totalMemories}`}
-        currentSection={currentSection}
-        onSectionChange={setCurrentSection}
-        counts={{
-          total: stats.totalMemories,
-          mem0: stats.sourceDistribution.mem0,
-          supermemory: stats.sourceDistribution.supermemory,
-          files: stats.sourceDistribution.file,
-          tasks: stats.sourceDistribution.task,
-          favorites: memories.filter(m => m.tags?.includes('favorite')).length,
-          pinned: memories.filter(m => m.tags?.includes('pinned')).length,
-          recent: memories.filter(m => {
-            const weekAgo = Date.now() - 7 * 24 * 60 * 60 * 1000;
-            return new Date(m.createdAt).getTime() > weekAgo;
-          }).length,
-        }}
-      />
+      {!isLoading && (
+        <Sidebar
+          key={`sidebar-${stats.totalMemories}`}
+          currentSection={currentSection}
+          onSectionChange={setCurrentSection}
+          counts={{
+            total: stats.totalMemories,
+            mem0: stats.sourceDistribution.mem0,
+            supermemory: stats.sourceDistribution.supermemory,
+            files: stats.sourceDistribution.file,
+            tasks: stats.sourceDistribution.task,
+            favorites: memories.filter(m => m.tags?.includes('favorite')).length,
+            pinned: memories.filter(m => m.tags?.includes('pinned')).length,
+            recent: memories.filter(m => {
+              const weekAgo = Date.now() - 7 * 24 * 60 * 60 * 1000;
+              return new Date(m.createdAt).getTime() > weekAgo;
+            }).length,
+          }}
+        />
+      )}
       
       <main className={styles.content}>
         {renderView()}
